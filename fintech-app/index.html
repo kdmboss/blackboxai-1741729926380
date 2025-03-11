@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTech App - Small Business Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">FinTech Pro</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="budget.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Budget Planner</a>
+                        <a href="loan.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Loan Checker</a>
+                        <a href="recommendations.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Recommendations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Dashboard Section -->
+        <div class="px-4 py-6 sm:px-0">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Financial Overview Card -->
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-wallet text-blue-500 text-3xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Monthly Revenue</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">$24,500</div>
+                                        <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                            <i class="fas fa-arrow-up"></i>
+                                            <span class="sr-only">Increased by</span>
+                                            12%
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expenses Card -->
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-chart-pie text-red-500 text-3xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Monthly Expenses</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">$18,000</div>
+                                        <div class="ml-2 flex items-baseline text-sm font-semibold text-red-600">
+                                            <i class="fas fa-arrow-up"></i>
+                                            <span class="sr-only">Increased by</span>
+                                            8%
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profit Card -->
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-chart-line text-green-500 text-3xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Net Profit</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">$6,500</div>
+                                        <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                            <i class="fas fa-arrow-up"></i>
+                                            <span class="sr-only">Increased by</span>
+                                            15%
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <!-- Revenue vs Expenses Chart -->
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900">Revenue vs Expenses</h3>
+                    <div class="mt-4" style="height: 300px;">
+                        <canvas id="revenueExpensesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Expense Breakdown Chart -->
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900">Expense Breakdown</h3>
+                    <div class="mt-4" style="height: 300px;">
+                        <canvas id="expenseBreakdownChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Health Score -->
+            <div class="mt-8">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Business Health Score</h3>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div class="flex items-center justify-center">
+                            <div class="relative w-48 h-48">
+                                <canvas id="healthScoreChart"></canvas>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-4xl font-bold text-blue-600">85</div>
+                                        <div class="text-sm text-gray-500">Health Score</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-green-800">Strong Points</h4>
+                                <ul class="mt-2 text-sm text-green-700">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle mr-2"></i>
+                                        Consistent revenue growth
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle mr-2"></i>
+                                        Good profit margins
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-yellow-800">Areas to Improve</h4>
+                                <ul class="mt-2 text-sm text-yellow-700">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-2"></i>
+                                        High operational costs
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-2"></i>
+                                        Cash flow management
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cash Flow Forecast -->
+            <div class="mt-8">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Cash Flow Forecast</h3>
+                    <canvas id="cashFlowChart" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Health Score Chart
+        const healthScoreCtx = document.getElementById('healthScoreChart').getContext('2d');
+        new Chart(healthScoreCtx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [85, 15],
+                    backgroundColor: [
+                        'rgb(59, 130, 246)',
+                        'rgb(229, 231, 235)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '80%',
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+
+        // Initialize Revenue vs Expenses Chart
+        const revenueExpensesCtx = document.getElementById('revenueExpensesChart').getContext('2d');
+        const revenueExpensesChart = new Chart(revenueExpensesCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [20000, 22000, 23000, 24000, 24500, 25000],
+                    borderColor: 'rgb(59, 130, 246)',
+                    tension: 0.1
+                }, {
+                    label: 'Expenses',
+                    data: [15000, 16000, 17000, 17500, 18000, 18500],
+                    borderColor: 'rgb(239, 68, 68)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Initialize Expense Breakdown Chart
+        const expenseBreakdownCtx = document.getElementById('expenseBreakdownChart').getContext('2d');
+        const expenseBreakdownChart = new Chart(expenseBreakdownCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Rent', 'Salaries', 'Marketing', 'Utilities', 'Other'],
+                datasets: [{
+                    data: [5000, 8000, 2000, 1500, 1500],
+                    backgroundColor: [
+                        'rgb(59, 130, 246)',
+                        'rgb(16, 185, 129)',
+                        'rgb(239, 68, 68)',
+                        'rgb(245, 158, 11)',
+                        'rgb(107, 114, 128)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Initialize Cash Flow Forecast Chart
+        const cashFlowCtx = document.getElementById('cashFlowChart').getContext('2d');
+        new Chart(cashFlowCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Projected Cash Flow',
+                    data: [30000, 32000, 35000, 38000, 40000, 42000],
+                    borderColor: 'rgb(16, 185, 129)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Update charts periodically with new data
+        function updateCharts() {
+            // Simulate real-time data updates
+            const newRevenueData = revenueExpensesChart.data.datasets[0].data.map(val => 
+                val * (1 + (Math.random() - 0.5) * 0.1)
+            );
+            const newExpenseData = revenueExpensesChart.data.datasets[1].data.map(val => 
+                val * (1 + (Math.random() - 0.5) * 0.1)
+            );
+
+            revenueExpensesChart.data.datasets[0].data = newRevenueData;
+            revenueExpensesChart.data.datasets[1].data = newExpenseData;
+            revenueExpensesChart.update();
+
+            // Update expense breakdown randomly
+            const newExpenseBreakdown = expenseBreakdownChart.data.datasets[0].data.map(val =>
+                val * (1 + (Math.random() - 0.5) * 0.05)
+            );
+            expenseBreakdownChart.data.datasets[0].data = newExpenseBreakdown;
+            expenseBreakdownChart.update();
+        }
+
+        // Update charts every 5 seconds
+        setInterval(updateCharts, 5000);
+    </script>
+</body>
+</html>
