@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Checker - FinTech Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">FinTech Pro</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="budget.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Budget Planner</a>
+                        <a href="loan.html" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Loan Checker</a>
+                        <a href="recommendations.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Recommendations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Loan Eligibility Checker</h3>
+                    
+                    <!-- Business Information Form -->
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div class="space-y-6">
+                            <h4 class="font-medium text-gray-900">Business Information</h4>
+                            
+                            <!-- Annual Revenue -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Annual Revenue</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="annual-revenue" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- Years in Business -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Years in Business</label>
+                                <div class="mt-1">
+                                    <input type="number" id="years-in-business" class="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="0">
+                                </div>
+                            </div>
+
+                            <!-- Credit Score -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Business Credit Score</label>
+                                <div class="mt-1">
+                                    <input type="number" id="credit-score" min="300" max="850" class="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="300-850">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <h4 class="font-medium text-gray-900">Financial Details</h4>
+                            
+                            <!-- Monthly Profit -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Average Monthly Profit</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="monthly-profit" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- Current Debt -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Current Business Debt</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="current-debt" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- Desired Loan Amount -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Desired Loan Amount</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="loan-amount" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Check Eligibility Button -->
+                    <div class="mt-8">
+                        <button onclick="checkLoanEligibility()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Check Loan Eligibility
+                        </button>
+                    </div>
+
+                    <!-- Eligibility Result -->
+                    <div id="eligibility-result" class="mt-8 hidden">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-4">Loan Eligibility Results</h4>
+                            <div class="space-y-4">
+                                <!-- Status -->
+                                <div class="p-4 rounded-lg" id="status-card">
+                                    <div class="flex items-center">
+                                        <i id="status-icon" class="text-2xl mr-3"></i>
+                                        <div>
+                                            <h5 class="font-medium" id="status-title"></h5>
+                                            <p class="text-sm text-gray-500" id="status-message"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Loan Details -->
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                                        <dt class="text-sm font-medium text-gray-500">Maximum Loan Amount</dt>
+                                        <dd id="max-loan" class="mt-1 text-2xl font-semibold text-gray-900">$0</dd>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                                        <dt class="text-sm font-medium text-gray-500">Estimated Interest Rate</dt>
+                                        <dd id="interest-rate" class="mt-1 text-2xl font-semibold text-gray-900">0%</dd>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                                        <dt class="text-sm font-medium text-gray-500">Suggested Term</dt>
+                                        <dd id="loan-term" class="mt-1 text-2xl font-semibold text-gray-900">0 months</dd>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function checkLoanEligibility() {
+            // Get input values
+            const annualRevenue = parseFloat(document.getElementById('annual-revenue').value) || 0;
+            const yearsInBusiness = parseFloat(document.getElementById('years-in-business').value) || 0;
+            const creditScore = parseFloat(document.getElementById('credit-score').value) || 0;
+            const monthlyProfit = parseFloat(document.getElementById('monthly-profit').value) || 0;
+            const currentDebt = parseFloat(document.getElementById('current-debt').value) || 0;
+            const desiredLoanAmount = parseFloat(document.getElementById('loan-amount').value) || 0;
+
+            // Calculate debt-to-income ratio
+            const monthlyRevenue = annualRevenue / 12;
+            const debtToIncomeRatio = (currentDebt / annualRevenue) * 100;
+
+            // Define eligibility criteria
+            const isEligible = creditScore >= 650 && 
+                             yearsInBusiness >= 2 && 
+                             debtToIncomeRatio <= 40 && 
+                             monthlyProfit > 0;
+
+            // Calculate maximum loan amount (50% of annual revenue)
+            const maxLoanAmount = annualRevenue * 0.5;
+
+            // Calculate interest rate based on credit score
+            let interestRate;
+            if (creditScore >= 750) interestRate = 5;
+            else if (creditScore >= 700) interestRate = 7;
+            else if (creditScore >= 650) interestRate = 9;
+            else interestRate = 12;
+
+            // Determine loan term based on amount
+            let loanTerm;
+            if (desiredLoanAmount <= 50000) loanTerm = 24;
+            else if (desiredLoanAmount <= 100000) loanTerm = 36;
+            else if (desiredLoanAmount <= 250000) loanTerm = 48;
+            else loanTerm = 60;
+
+            // Show results
+            const resultDiv = document.getElementById('eligibility-result');
+            const statusCard = document.getElementById('status-card');
+            const statusIcon = document.getElementById('status-icon');
+            const statusTitle = document.getElementById('status-title');
+            const statusMessage = document.getElementById('status-message');
+
+            resultDiv.classList.remove('hidden');
+
+            if (isEligible) {
+                statusCard.className = 'p-4 rounded-lg bg-green-50';
+                statusIcon.className = 'fas fa-check-circle text-green-500 text-2xl mr-3';
+                statusTitle.textContent = "Congratulations! You're Pre-Qualified";
+                statusTitle.className = "font-medium text-green-800";
+                statusMessage.textContent = "Based on your business profile, you meet our basic eligibility criteria.";
+                statusMessage.className = 'text-sm text-green-600';
+            } else {
+                statusCard.className = 'p-4 rounded-lg bg-red-50';
+                statusIcon.className = 'fas fa-exclamation-circle text-red-500 text-2xl mr-3';
+                statusTitle.textContent = "Not Eligible at This Time";
+                statusTitle.className = "font-medium text-red-800";
+                statusMessage.textContent = "Unfortunately, your business doesn't meet our minimum eligibility criteria.";
+                statusMessage.className = 'text-sm text-red-600';
+            }
+
+            // Format currency
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            });
+
+            // Update loan details
+            document.getElementById('max-loan').textContent = formatter.format(maxLoanAmount);
+            document.getElementById('interest-rate').textContent = `${interestRate}%`;
+            document.getElementById('loan-term').textContent = `${loanTerm} months`;
+        }
+    </script>
+</body>
+</html>
