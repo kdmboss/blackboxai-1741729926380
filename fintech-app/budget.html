@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner - FinTech Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">FinTech Pro</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="budget.html" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Budget Planner</a>
+                        <a href="loan.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Loan Checker</a>
+                        <a href="recommendations.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Recommendations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Monthly Budget Planner</h3>
+                    
+                    <!-- Budget Form -->
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div class="space-y-6">
+                            <h4 class="font-medium text-gray-900">Income Sources</h4>
+                            
+                            <!-- Revenue Input -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Primary Revenue</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="primary-revenue" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" value="0">
+                                </div>
+                            </div>
+
+                            <!-- Additional Income -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Additional Income</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="additional-income" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <h4 class="font-medium text-gray-900">Expenses</h4>
+                            
+                            <!-- Fixed Expenses -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Fixed Expenses</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="fixed-expenses" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" value="0">
+                                </div>
+                            </div>
+
+                            <!-- Variable Expenses -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Variable Expenses</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="variable-expenses" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expense Categories -->
+                    <div class="mt-8">
+                        <h4 class="font-medium text-gray-900 mb-4">Expense Categories</h4>
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                            <!-- Rent/Utilities -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Rent/Utilities</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- Salaries -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Salaries</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- Marketing -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Marketing</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculate Button -->
+                    <div class="mt-8">
+                        <button onclick="calculateBudget()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Calculate Budget
+                        </button>
+                    </div>
+
+                    <!-- Budget Summary -->
+                    <div class="mt-8">
+                        <h4 class="font-medium text-gray-900 mb-4">Budget Summary</h4>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                                <div class="p-4 bg-white rounded-lg shadow-sm">
+                                    <dt class="text-sm font-medium text-gray-500">Total Income</dt>
+                                    <dd id="total-income" class="mt-2 text-3xl font-semibold text-blue-600">$0.00</dd>
+                                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        <span>Primary + Additional Income</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-white rounded-lg shadow-sm">
+                                    <dt class="text-sm font-medium text-gray-500">Total Expenses</dt>
+                                    <dd id="total-expenses" class="mt-2 text-3xl font-semibold text-red-600">$0.00</dd>
+                                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        <span>Fixed + Variable Expenses</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-white rounded-lg shadow-sm">
+                                    <dt class="text-sm font-medium text-gray-500">Net Income</dt>
+                                    <dd id="net-income" class="mt-2 text-3xl font-semibold text-green-600">$0.00</dd>
+                                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        <span>Income - Expenses</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget Chart -->
+                    <div class="mt-8">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-4">Budget Visualization</h4>
+                            <canvas id="budgetChart" class="w-full" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let budgetChart = null;
+
+        function calculateBudget() {
+            // Get income values
+            const primaryRevenue = parseFloat(document.getElementById('primary-revenue').value) || 0;
+            const additionalIncome = parseFloat(document.getElementById('additional-income').value) || 0;
+            
+            // Get expense values
+            const fixedExpenses = parseFloat(document.getElementById('fixed-expenses').value) || 0;
+            const variableExpenses = parseFloat(document.getElementById('variable-expenses').value) || 0;
+            
+            // Calculate totals
+            const totalIncome = primaryRevenue + additionalIncome;
+            const totalExpenses = fixedExpenses + variableExpenses;
+            const netIncome = totalIncome - totalExpenses;
+            
+            // Format currency
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            });
+            
+            // Update summary with formatted currency
+            document.getElementById('total-income').textContent = formatter.format(totalIncome);
+            document.getElementById('total-expenses').textContent = formatter.format(totalExpenses);
+            document.getElementById('net-income').textContent = formatter.format(netIncome);
+            
+            // Update chart
+            updateBudgetChart(totalIncome, totalExpenses);
+        }
+
+        function updateBudgetChart(income, expenses) {
+            const ctx = document.getElementById('budgetChart').getContext('2d');
+            
+            if (budgetChart) {
+                budgetChart.destroy();
+            }
+            
+            budgetChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Income', 'Expenses'],
+                    datasets: [{
+                        label: 'Budget Overview',
+                        data: [income, expenses],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.5)',
+                            'rgba(239, 68, 68, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgb(59, 130, 246)',
+                            'rgb(239, 68, 68)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + context.raw.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize empty chart
+        updateBudgetChart(0, 0);
+    </script>
+</body>
+</html>
