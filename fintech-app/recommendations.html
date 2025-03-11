@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recommendations - FinTech Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">FinTech Pro</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="budget.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Budget Planner</a>
+                        <a href="loan.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Loan Checker</a>
+                        <a href="recommendations.html" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Recommendations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <!-- AI Insights Section -->
+            <div class="bg-white shadow rounded-lg mb-6">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">AI-Powered Business Insights</h3>
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        <!-- Expense Pattern Analysis -->
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-medium text-blue-900 mb-4">
+                                <i class="fas fa-brain mr-2"></i>
+                                Expense Pattern Analysis
+                            </h4>
+                            <div id="expense-patterns" class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-arrow-trend-down text-green-500 text-xl mr-3"></i>
+                                        <div>
+                                            <h5 class="font-medium text-gray-900">Utility Cost Optimization</h5>
+                                            <p class="text-sm text-gray-600">Your utility costs are 15% higher than similar businesses. Consider energy-efficient alternatives to reduce monthly expenses.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-chart-line text-blue-500 text-xl mr-3"></i>
+                                        <div>
+                                            <h5 class="font-medium text-gray-900">Seasonal Spending Trends</h5>
+                                            <p class="text-sm text-gray-600">Marketing expenses peak during off-season. Consider reallocating budget to high-impact periods.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Growth Opportunities -->
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h4 class="font-medium text-green-900 mb-4">
+                                <i class="fas fa-rocket mr-2"></i>
+                                Growth Opportunities
+                            </h4>
+                            <div id="growth-opportunities" class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-piggy-bank text-purple-500 text-xl mr-3"></i>
+                                        <div>
+                                            <h5 class="font-medium text-gray-900">Investment Potential</h5>
+                                            <p class="text-sm text-gray-600">Based on your cash flow, you could invest $5,000 in equipment upgrades while maintaining healthy reserves.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-handshake text-orange-500 text-xl mr-3"></i>
+                                        <div>
+                                            <h5 class="font-medium text-gray-900">Partnership Opportunities</h5>
+                                            <p class="text-sm text-gray-600">Your business profile matches well with local suppliers. Consider bulk purchasing agreements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Reduction Recommendations -->
+            <div class="bg-white shadow rounded-lg mb-6">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Cost Reduction Strategies</h3>
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-center w-12 h-12 rounded-md bg-blue-100 text-blue-600 mb-4">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-900 mb-2">Energy Efficiency</h4>
+                            <p class="text-sm text-gray-600">Implementing smart thermostats and LED lighting could reduce utility costs by up to 20%.</p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                    Potential Savings: $200/mo
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-center w-12 h-12 rounded-md bg-green-100 text-green-600 mb-4">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-900 mb-2">Supplier Optimization</h4>
+                            <p class="text-sm text-gray-600">Consolidating suppliers and negotiating bulk rates could reduce supply costs.</p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    Potential Savings: $350/mo
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-center w-12 h-12 rounded-md bg-purple-100 text-purple-600 mb-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-900 mb-2">Process Automation</h4>
+                            <p class="text-sm text-gray-600">Automating manual processes could reduce labor costs and improve efficiency.</p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                                    Potential Savings: $500/mo
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profit Margin Analysis -->
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Profit Margin Analysis</h3>
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        <!-- Margin Trend Chart -->
+                        <div>
+                            <canvas id="marginTrendChart" height="300"></canvas>
+                        </div>
+
+                        <!-- Recommendations -->
+                        <div class="space-y-4">
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-yellow-900 mb-2">
+                                    <i class="fas fa-lightbulb mr-2"></i>
+                                    Margin Improvement Opportunities
+                                </h4>
+                                <ul class="space-y-2 text-sm text-yellow-800">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle mr-2"></i>
+                                        Increase prices on high-demand products by 5%
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle mr-2"></i>
+                                        Optimize inventory levels to reduce storage costs
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle mr-2"></i>
+                                        Implement early payment discounts with suppliers
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-indigo-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-indigo-900 mb-2">
+                                    <i class="fas fa-chart-bar mr-2"></i>
+                                    Industry Comparison
+                                </h4>
+                                <p class="text-sm text-indigo-800">Your gross margin is 2% below industry average. Following these recommendations could help close this gap.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Margin Trend Chart
+        const marginCtx = document.getElementById('marginTrendChart').getContext('2d');
+        new Chart(marginCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Gross Margin',
+                    data: [25, 26, 24, 25, 27, 28],
+                    borderColor: 'rgb(59, 130, 246)',
+                    tension: 0.1,
+                    fill: false
+                }, {
+                    label: 'Industry Average',
+                    data: [27, 27, 27, 27, 27, 27],
+                    borderColor: 'rgb(156, 163, 175)',
+                    borderDash: [5, 5],
+                    tension: 0.1,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Margin Trend vs Industry Average (%)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 20,
+                        max: 30
+                    }
+                }
+            }
+        });
+
+        // Function to analyze expenses and provide recommendations
+        function analyzeExpenses(expenses) {
+            // This would typically connect to a backend AI service
+            // For demo purposes, we're using static recommendations
+            return {
+                patterns: [
+                    {
+                        title: "Utility Cost Optimization",
+                        description: "Your utility costs are 15% higher than similar businesses. Consider energy-efficient alternatives."
+                    },
+                    {
+                        title: "Seasonal Spending Trends",
+                        description: "Marketing expenses peak during off-season. Consider reallocating budget."
+                    }
+                ],
+                opportunities: [
+                    {
+                        title: "Investment Potential",
+                        description: "Based on your cash flow, you could invest $5,000 in equipment upgrades."
+                    },
+                    {
+                        title: "Partnership Opportunities",
+                        description: "Your business profile matches well with local suppliers."
+                    }
+                ]
+            };
+        }
+    </script>
+</body>
+</html>
